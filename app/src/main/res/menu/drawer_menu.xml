@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_star"
+        android:icon="@drawable/star"
+        android:layoutDirection="rtl"
+        android:textDirection="rtl"
+        android:title="امتیاز دادن" />
+    <item
+        android:id="@+id/nav_source"
+        android:icon="@drawable/stacks_24px"
+        android:layoutDirection="rtl"
+        android:textDirection="rtl"
+        android:title="منابع" />
+
+    <item
+        android:id="@+id/nav_suggest"
+        android:icon="@drawable/check_24px"
+        android:layoutDirection="rtl"
+        android:textDirection="rtl"
+        android:title="پیشنهاد غذای جدید" />
+
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/settings"
+        android:layoutDirection="rtl"
+        android:textDirection="rtl"
+        android:title="@string/settings_icon" />
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/person"
+        android:layoutDirection="rtl"
+        android:textDirection="rtl"
+        android:title="درباره ما" />
+
+</menu>

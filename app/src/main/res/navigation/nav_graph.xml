@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="ir.shahramkhandagi.cookguide.ui.fragment.HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_recipeListFragment"
+            app:destination="@id/recipeListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/recipeListFragment"
+        android:name="ir.shahramkhandagi.cookguide.ui.fragment.RecipeListFragment"
+        tools:layout="@layout/fragment_recipe_list">
+        <argument
+            android:name="category"
+            app:argType="ir.shahramkhandagi.cookguide.model.RecipeCategory" />
+        <action
+            android:id="@+id/action_recipeListFragment_to_recipeDetailFragment2"
+            app:destination="@id/recipeDetailFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/recipeDetailFragment"
+        android:name="ir.shahramkhandagi.cookguide.ui.fragment.RecipeDetailFragment"
+        tools:layout="@layout/fragment_recipe_detail">
+        <argument
+            android:name="recipe"
+            app:argType="ir.shahramkhandagi.cookguide.model.Recipe" />
+        <action
+            android:id="@+id/action_recipeListFragment_to_recipeDetailFragment"
+            app:destination="@id/recipeDetailFragment" />
+    </fragment>
+</navigation>

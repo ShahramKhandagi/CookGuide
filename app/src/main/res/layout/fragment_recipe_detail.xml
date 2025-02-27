@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/test_scene">
+
+    <ImageView
+        android:id="@+id/recipeImage"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="#F6F6F6"
+        android:hapticFeedbackEnabled="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/min" />
+
+    <ImageView
+        android:id="@+id/image_gradient"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/recipeImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/image_btm_overlay" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/mainScroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="230dp"
+            android:background="@drawable/card_recipe"
+            android:paddingHorizontal="8dp">
+
+            <TextView
+                android:id="@+id/recipeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/vazir_bold"
+                android:text="ست"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/scroll"
+                app:layout_constraintEnd_toStartOf="@+id/scroll"
+                app:layout_constraintTop_toTopOf="@+id/scroll" />
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/ing_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                app:layout_constraintEnd_toEndOf="@+id/recipeDescription"
+                app:layout_constraintStart_toStartOf="@+id/recipeDescription"
+                app:layout_constraintTop_toBottomOf="@+id/recipeDescription">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:fontFamily="@font/vazir_bold"
+                        android:text="مواد لازم برای تهیه"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <com.google.android.flexbox.FlexboxLayout
+                        android:id="@+id/recipeIngredients"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        app:alignItems="flex_end"
+                        app:flexDirection="row"
+                        app:flexWrap="wrap"
+                        app:justifyContent="flex_end"
+                        tools:ignore="MissingClass" />
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+            <LinearLayout
+                android:id="@+id/steps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/ing_scroll"
+                app:layout_constraintStart_toStartOf="@+id/ing_scroll"
+                app:layout_constraintTop_toBottomOf="@+id/ing_scroll">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:fontFamily="@font/vazir_bold"
+                        android:text="مراحل پخت"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/tvStepText1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/vazir_medium"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tvStepNumber1"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:gravity="center"
+                            android:text="1"
+                            android:fontFamily="@font/vazir_bold"
+                            android:layout_gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black"
+
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        >
+
+
+                        <TextView
+                            android:id="@+id/tvStepText2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/vazir_medium"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tvStepNumber2"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:gravity="center"
+                            android:text="2"
+
+                            android:fontFamily="@font/vazir_bold"
+                            android:layout_gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black"
+
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        >
+
+
+                        <TextView
+                            android:id="@+id/tvStepText3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/vazir_medium"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tvStepNumber3"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:gravity="center"
+                            android:text="3"
+
+                            android:fontFamily="@font/vazir_bold"
+                            android:layout_gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black"
+
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        >
+
+
+                        <TextView
+                            android:id="@+id/tvStepText4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/vazir_medium"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tvStepNumber4"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:gravity="center"
+                            android:text="4"
+
+                            android:fontFamily="@font/vazir_bold"
+                            android:layout_gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black"
+
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        >
+
+
+                        <TextView
+                            android:id="@+id/tvStepText5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/vazir_medium"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tvStepNumber5"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:gravity="center"
+                            android:text="5"
+
+                            android:fontFamily="@font/vazir_bold"
+                            android:layout_gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black"
+
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        >
+
+
+                        <TextView
+                            android:id="@+id/tvStepText6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/vazir_medium"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tvStepNumber6"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:gravity="center"
+                            android:text="6"
+
+                            android:fontFamily="@font/vazir_bold"
+                            android:layout_gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black"
+
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        >
+
+
+                        <TextView
+                            android:id="@+id/tvStepText7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/vazir_medium"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tvStepNumber7"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:gravity="center"
+                            android:text="7"
+
+                            android:fontFamily="@font/vazir_bold"
+                            android:layout_gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black"
+
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        >
+
+
+                        <TextView
+                            android:id="@+id/tvStepText8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/vazir_medium"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tvStepNumber8"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:gravity="center"
+                            android:text="8"
+
+                            android:fontFamily="@font/vazir_bold"
+                            android:layout_gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black"
+
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        >
+
+
+                        <TextView
+                            android:id="@+id/tvStepText9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/vazir_medium"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tvStepNumber9"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:gravity="center"
+                            android:text="9"
+
+                            android:fontFamily="@font/vazir_bold"
+                            android:layout_gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black"
+
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        >
+
+
+                        <TextView
+                            android:id="@+id/tvStepText10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/vazir_medium"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tvStepNumber10"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:gravity="center"
+                            android:text="10"
+
+                            android:fontFamily="@font/vazir_bold"
+                            android:layout_gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black"
+
+                            />
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/scroll"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/scroll_up"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/recipeDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginHorizontal="15dp"
+                android:fontFamily="@font/vazir_medium"
+                android:text="توضیحات کامل"
+                app:layout_constraintEnd_toEndOf="@+id/scroll"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scroll" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

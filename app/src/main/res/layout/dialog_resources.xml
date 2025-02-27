@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvImageResources"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="منابع تصاویر"
+        android:fontFamily="@font/vazir_bold"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingBottom="8dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvImageResources"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:nestedScrollingEnabled="false" />
+
+    <TextView
+        android:id="@+id/tvCommandResources"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="منابع دستورها"
+        android:textSize="18sp"
+        android:fontFamily="@font/vazir_bold"
+        android:textStyle="bold"
+        android:paddingBottom="8dp" />
+
+    <!-- لیست منابع دستورها -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCommandResources"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false" />
+
+    <TextView
+        android:id="@+id/tvFontResources"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="فونت ها"
+        android:textSize="18sp"
+        android:fontFamily="@font/vazir_bold"
+        android:textStyle="bold"
+        android:paddingBottom="8dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFontResources"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false" />
+
+
+</LinearLayout>
