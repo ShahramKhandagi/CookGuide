@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.adivery.sdk.AdiveryAdListener
-import com.adivery.sdk.AdiveryBannerAdView
 import ir.shahramkhandagi.cookguide.utils.Searchable
 import ir.shahramkhandagi.cookguide.adapter.RecipeAdapter
 import ir.shahramkhandagi.cookguide.databinding.FragmentRecipeListBinding
@@ -36,25 +34,8 @@ class RecipeListFragment : Fragment(), Searchable {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val bannerAd: AdiveryBannerAdView = view.findViewById(ir.shahramkhandagi.cookguide.R.id.banner_ad)
 
-        bannerAd.setBannerAdListener(object : AdiveryAdListener() {
-            override fun onAdLoaded() {
-                // تبلیغ به‌طور خودکار نمایش داده می‌شود، هر کار دیگری لازم است اینجا انجام دهید.
-//                Toast.makeText(, "", Toast.LENGTH_SHORT).show()
-            }
 
-            override fun onError(reason: String) {
-                // خطا را چاپ کنید تا از دلیل آن مطلع شوید
-            }
-
-            override fun onAdClicked() {
-                // کاربر روی بنر کلیک کرده
-            }
-        })
-
-        bannerAd.loadAd()
-        
         // دریافت دسته‌بندی و لیست دستور غذاها
         val category = arguments?.getSerializable("category") as RecipeCategory
         recipes = category.recipes  // لیست اصلی را نگه می‌داریم
