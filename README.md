@@ -18,8 +18,8 @@ Have hundreds of recipes for food, desserts and sweets in one comprehensive appl
 - etc...
 
 ## App Screenshots 📷
-<div style="width: 100%; max-width: 800px; margin: 0 auto;">
-
+<div style="width: 100%; max-width: 1200px; margin: 0 auto;">
+ 
   <img src="app/src/main/1.png" alt="پوستر" style="width: 100%; height: auto; margin-bottom: 20px;">
 
   <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
