@@ -18,7 +18,16 @@ Have hundreds of recipes for food, desserts and sweets in one comprehensive appl
 - etc...
 
 ## App Screenshots 📷
-<img src="[readme/iPhone%20–%202.png](https://raw.githubusercontent.com/ShahramKhandagi/CookGuide/refs/heads/master/app/src/main/iPhone%20%E2%80%93%201.png)" width="250"/> &nbsp;&nbsp;&nbsp;&nbsp; <img src="readme/iPhone%20–%203.png" width="250"/> &nbsp;&nbsp;&nbsp;&nbsp; <img src="readme/iPhone%20–%204.png" width="250"/> 
-<img src="readme/iPhone%20–%205.png" width="250"/> &nbsp;&nbsp;&nbsp;&nbsp; <img src="readme/5.jpg" width="250"/>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+  <img src="app/src/main/1.png" alt="اسکرین‌شات ۱" style="width: 24%; margin-bottom: 10px;">
+  <img src="app/src/main/2.png" alt="اسکرین‌شات ۲" style="width: 24%; margin-bottom: 10px;">
+  <img src="app/src/main/3.png" alt="اسکرین‌شات ۳" style="width: 24%; margin-bottom: 10px;">
+  <img src="app/src/main/4.png" alt="اسکرین‌شات ۴" style="width: 24%; margin-bottom: 10px;">
+  <img src="app/src/main/5.png" alt="اسکرین‌شات ۵" style="width: 24%; margin-bottom: 10px;">
+  <img src="app/src/main/6.png" alt="اسکرین‌شات ۶" style="width: 24%; margin-bottom: 10px;">
+  <img src="app/src/main/7.png" alt="اسکرین‌شات ۷" style="width: 24%; margin-bottom: 10px;">
+  <img src="app/src/main/8.png" alt="اسکرین‌شات ۸" style="width: 24%; margin-bottom: 10px;">
+</div>
 
 🍽️ Download now and learn to cook professionally!
