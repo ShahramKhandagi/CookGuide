@@ -2,7 +2,7 @@
 
 # Description
 
- With "DastorPaz", cooking is easier than ever!
+With "DastorPaz", cooking is easier than ever!
 Have hundreds of recipes for food, desserts and sweets in one comprehensive application. Always be a professional chef with various educational recipes and cooking tips! 👨‍🍳🔥
 
 ## Download 
@@ -16,6 +16,7 @@ Have hundreds of recipes for food, desserts and sweets in one comprehensive appl
 - Amazing UI
 - Simple & Clean Code
 - etc...
+
 
 ## App Screenshots 📷
 <div style="text-align: center; margin-bottom: 20px;">
@@ -32,6 +33,8 @@ Have hundreds of recipes for food, desserts and sweets in one comprehensive appl
 </div>
 
 
+---
+## 🙏 Support
 
-
+Don't forget to leave a star ⭐️
 🍽️ Download now and learn to cook professionally!
