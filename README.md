@@ -18,7 +18,7 @@ Have hundreds of recipes for food, desserts and sweets in one comprehensive appl
 - etc...
 
 ## App Screenshots 📷
-<img src="readme/iPhone%20–%202.png" width="250"/> &nbsp;&nbsp;&nbsp;&nbsp; <img src="readme/iPhone%20–%203.png" width="250"/> &nbsp;&nbsp;&nbsp;&nbsp; <img src="readme/iPhone%20–%204.png" width="250"/> 
+<img src="[readme/iPhone%20–%202.png](https://raw.githubusercontent.com/ShahramKhandagi/CookGuide/refs/heads/master/app/src/main/iPhone%20%E2%80%93%201.png)" width="250"/> &nbsp;&nbsp;&nbsp;&nbsp; <img src="readme/iPhone%20–%203.png" width="250"/> &nbsp;&nbsp;&nbsp;&nbsp; <img src="readme/iPhone%20–%204.png" width="250"/> 
 <img src="readme/iPhone%20–%205.png" width="250"/> &nbsp;&nbsp;&nbsp;&nbsp; <img src="readme/5.jpg" width="250"/>
 
 🍽️ Download now and learn to cook professionally!
