@@ -21,13 +21,12 @@ class RecipeListFragment : Fragment(), Searchable {
     private val binding get() = _binding!!
 
     private lateinit var recipeAdapter: RecipeAdapter
-    private lateinit var recipes: List<Recipe>  // برای ذخیره‌سازی لیست اصلی جهت فیلتر کردن
-
+    private lateinit var recipes: List<Recipe>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentRecipeListBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -35,28 +34,31 @@ class RecipeListFragment : Fragment(), Searchable {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        // دریافت دسته‌بندی و لیست دستور غذاها
-        val category = arguments?.getSerializable("category") as RecipeCategory
-        recipes = category.recipes  // لیست اصلی را نگه می‌داریم
+        // دریافت داده‌های ورودی
+        val category = arguments?.getSerializable("category") as? RecipeCategory
+        recipes = category?.recipes ?: emptyList()
 
         // تنظیم RecyclerView
-        binding.recyclerView.layoutManager = GridLayoutManager(context, 2)
+        binding.recyclerView.apply {
+            layoutManager = GridLayoutManager(context, 2)
+            setHasFixedSize(true)
+            setItemViewCacheSize(20)
+            isNestedScrollingEnabled = false
+        }
+
         recipeAdapter = RecipeAdapter(recipes) { recipe ->
             val action = RecipeListFragmentDirections.actionRecipeListFragmentToRecipeDetailFragment2(recipe)
             findNavController().navigate(action)
         }
+
         binding.recyclerView.adapter = recipeAdapter
 
-        // این فرگمنت را به عنوان فرگمنت قابل جستجو به اکتیویتی معرفی می‌کنیم
+        // معرفی این فرگمنت به عنوان searchable
         (activity as? MainActivity)?.setSearchableFragment(this)
     }
 
     override fun onSearchQuery(query: String) {
-        // فیلتر کردن لیست بر اساس جستجو
-        val filteredRecipes = recipes.filter { recipe ->
-            recipe.name.contains(query, ignoreCase = true)
-        }
+        val filteredRecipes = recipes.filter { it.name.contains(query, ignoreCase = true) }
         recipeAdapter.updateList(filteredRecipes)
     }
 
@@ -65,5 +67,3 @@ class RecipeListFragment : Fragment(), Searchable {
         _binding = null
     }
 }
-
-

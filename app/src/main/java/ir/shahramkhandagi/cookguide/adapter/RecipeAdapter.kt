@@ -8,7 +8,8 @@ import ir.shahramkhandagi.cookguide.R
 import ir.shahramkhandagi.cookguide.databinding.ItemRecipeBinding
 import ir.shahramkhandagi.cookguide.model.Recipe
 import com.bumptech.glide.Glide
-
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 
 
 class RecipeAdapter(
@@ -16,16 +17,23 @@ class RecipeAdapter(
     private val onItemClick: (Recipe) -> Unit
 ) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
 
-    inner class ViewHolder(val binding: ItemRecipeBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ItemRecipeBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(recipe: Recipe) {
             binding.recipeName.text = recipe.name
 
             val context = binding.root.context
-
             val imageResId = context.resources.getIdentifier(recipe.image, "drawable", context.packageName)
 
+            // Glide با بهینه‌سازی
             Glide.with(context)
                 .load(imageResId.takeIf { it != 0 } ?: R.drawable.logo)
+                .apply(
+                    RequestOptions()
+                        .centerCrop()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .placeholder(R.drawable.logo)
+                        .error(R.drawable.logo)
+                )
                 .into(binding.recipeImage)
 
             binding.root.setOnClickListener { onItemClick(recipe) }
@@ -41,9 +49,10 @@ class RecipeAdapter(
         holder.bind(recipes[position])
     }
 
-    override fun getItemCount() = recipes.size
+    override fun getItemCount(): Int = recipes.size
 
     fun updateList(newRecipes: List<Recipe>) {
+        // بهتره از DiffUtil استفاده کنید برای عملکرد بهتر
         recipes = newRecipes
         notifyDataSetChanged()
     }

@@ -2,6 +2,7 @@ package ir.shahramkhandagi.cookguide.ui.activity
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -128,7 +129,8 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        setCustomFontForSearchView(binding.searchView)
+
+//        setCustomFontForSearchView(binding.searchView)
     }
 
     private fun openBazaarReview() {
@@ -144,21 +146,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setCustomFontForSearchView(searchView: SearchView) {
-        try {
-            // بارگذاری فونت از res/font
-            val customFont = ResourcesCompat.getFont(this, R.font.vazir)
-
-            // دستیابی به EditText داخلی SearchView
-            val searchEditText =
-                searchView.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
-
-            // اعمال فونت به EditText
-            searchEditText?.typeface = customFont
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
+//    private fun setCustomFontForSearchView(searchView: SearchView) {
+//        try {
+//            // بارگذاری فونت از res/font
+//            val customFont = ResourcesCompat.getFont(this, R.font.vazir)
+//
+//            // دستیابی به EditText داخلی SearchView
+//            val searchEditText =
+//                searchView.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
+//
+//            // اعمال فونت به EditText
+//            searchEditText?.typeface = customFont
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//        }
+//    }
 
 
     // تنظیم فرگمنت قابل جستجو

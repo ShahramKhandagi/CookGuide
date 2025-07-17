@@ -20,6 +20,7 @@ class HomeFragment : Fragment(), Searchable {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var originalCategories: List<RecipeCategory>
     private lateinit var displayedCategories: MutableList<RecipeCategory>
     private lateinit var adapter: RecipeCategoryAdapter
@@ -27,22 +28,31 @@ class HomeFragment : Fragment(), Searchable {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        // بارگذاری لیست دسته‌بندی‌ها از فایل JSON
         originalCategories = Utils.loadRecipeCategoriesFromJson(requireContext())
         displayedCategories = originalCategories.toMutableList()
 
-        // تنظیم RecyclerView و Adapter
-        binding.categoryRecyclerView.layoutManager = GridLayoutManager(context, 2)
+        setupRecyclerView()
+
+        return binding.root
+    }
+
+    private fun setupRecyclerView() {
+        binding.categoryRecyclerView.apply {
+            layoutManager = GridLayoutManager(context, 2)
+            setHasFixedSize(true)
+            setItemViewCacheSize(20)
+            isNestedScrollingEnabled = false
+        }
+
         adapter = RecipeCategoryAdapter(displayedCategories) { category ->
             val action = HomeFragmentDirections.actionHomeFragmentToRecipeListFragment(category)
             findNavController().navigate(action)
         }
-        binding.categoryRecyclerView.adapter = adapter
 
-        return binding.root
+        binding.categoryRecyclerView.adapter = adapter
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,17 +61,18 @@ class HomeFragment : Fragment(), Searchable {
     }
 
     override fun onSearchQuery(query: String) {
-        // فیلتر کردن دسته‌بندی‌ها براساس جستجو
-        displayedCategories.clear()
-        if (query.isEmpty()) {
-            displayedCategories.addAll(originalCategories)
+        val filtered = if (query.isEmpty()) {
+            originalCategories
         } else {
-            val filteredCategories = originalCategories.filter { category ->
-                category.name.contains(query, ignoreCase = true)
-            }
-            displayedCategories.addAll(filteredCategories)
+            originalCategories.filter { it.name.contains(query, ignoreCase = true) }
         }
-        adapter.notifyDataSetChanged()
+
+        // فقط زمانی لیست رو به‌روز کن که تغییر واقعی اتفاق افتاده باشه
+        if (filtered != displayedCategories) {
+            displayedCategories.clear()
+            displayedCategories.addAll(filtered)
+            adapter.notifyDataSetChanged()
+        }
     }
 
     override fun onDestroyView() {
@@ -69,6 +80,3 @@ class HomeFragment : Fragment(), Searchable {
         _binding = null
     }
 }
-
-
-
