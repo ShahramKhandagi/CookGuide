@@ -1,6 +1,7 @@
 package ir.shahramkhandagi.cookguide.ui.activity
 
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
 import android.net.Uri
@@ -11,25 +12,40 @@ import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.GravityCompat
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import ir.shahramkhandagi.cookguide.R
 import ir.shahramkhandagi.cookguide.utils.ResourcesDialogFragment
 import ir.shahramkhandagi.cookguide.utils.Searchable
 import ir.shahramkhandagi.cookguide.databinding.ActivityMainBinding
 
 
-
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var searchableFragment: Searchable? = null
 
+    private val PREFS_NAME = "theme_prefs"
+    private val KEY_IS_DARK_MODE = "is_dark_mode"
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val sharedPrefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val isDarkMode = sharedPrefs.getBoolean(KEY_IS_DARK_MODE, false)
+
+        if (isDarkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+        }
+
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -38,6 +54,20 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = ""
         binding.searchView.isFocusable = false;
 
+        if (isDarkMode) {
+
+            Glide.with(this)
+                .load(R.drawable.logo_black)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .into(binding.logo)
+        } else {
+            Glide.with(this)
+                .load(R.drawable.logo)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .into(binding.logo)
+        }
 
         val settingsIcon = findViewById<ImageView>(R.id.settingsIcon)
         settingsIcon.setOnClickListener {
@@ -54,6 +84,7 @@ class MainActivity : AppCompatActivity() {
                     openBazaarReview()
                     true
                 }
+
                 R.id.nav_source -> {
                     val dialog = ResourcesDialogFragment()
                     dialog.show(supportFragmentManager, "ResourcesDialog")
@@ -70,8 +101,29 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "بزودی...", Toast.LENGTH_SHORT).show()
                     true
                 }
+
                 R.id.nav_profile -> {
                     Toast.makeText(this, "بزودی...", Toast.LENGTH_SHORT).show()
+                    true
+                }
+
+                R.id.nav_toggle_theme -> {
+                    val sharedPrefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+                    val isDarkMode = sharedPrefs.getBoolean(KEY_IS_DARK_MODE, false)
+
+                    // ذخیره حالت جدید
+                    sharedPrefs.edit().putBoolean(KEY_IS_DARK_MODE, !isDarkMode).apply()
+
+                    // تغییر تم
+                    if (isDarkMode) {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    } else {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    }
+
+                    // ریستارت اکتیویتی برای اعمال تم جدید
+                    recreate()
+
                     true
                 }
 
@@ -136,12 +188,14 @@ class MainActivity : AppCompatActivity() {
     private fun openBazaarReview() {
         val appPackageName = "ir.shahramkhandagi.cookguide" // پکیج نیم اپلیکیشن شما
         try {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("bazaar://details?id=$appPackageName"))
+            val intent =
+                Intent(Intent.ACTION_VIEW, Uri.parse("bazaar://details?id=$appPackageName"))
             intent.setPackage("ir.shahramkhandagi.cookguide") // مشخص کردن که این Intent فقط باید توسط کافه‌بازار باز شود
             startActivity(intent)
         } catch (e: ActivityNotFoundException) {
             // اگر کافه‌بازار نصب نیست، مرورگر را باز کنید
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://cafebazaar.ir/app/$appPackageName"))
+            val intent =
+                Intent(Intent.ACTION_VIEW, Uri.parse("https://cafebazaar.ir/app/$appPackageName"))
             startActivity(intent)
         }
     }

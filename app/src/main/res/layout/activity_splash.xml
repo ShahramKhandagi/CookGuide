@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/vazir_medium"
-        android:text="دستور پخت انواغ غذا ها"
+        android:text="دستور پخت انواع غذا ها"
         android:textSize="22sp"
         android:layout_below="@id/splashLogo"
         android:layout_centerHorizontal="true"

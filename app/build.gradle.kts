@@ -3,7 +3,9 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
-
+    id("com.google.gms.google-services")
+    alias(libs.plugins.google.firebase.crashlytics)
+    alias(libs.plugins.google.firebase.firebase.perf)
 
 
 }
@@ -59,6 +61,10 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.perf)
+    implementation(libs.firebase.messaging)
+    implementation(libs.firebase.inappmessaging.display)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -68,7 +74,6 @@ dependencies {
     implementation(libs.kotlin.stdlib)
     implementation(libs.flexbox)
     implementation(libs.glide)
-
-
-
+    implementation(platform("com.google.firebase:firebase-bom:33.16.0"))
+    implementation("com.google.firebase:firebase-analytics")
 }

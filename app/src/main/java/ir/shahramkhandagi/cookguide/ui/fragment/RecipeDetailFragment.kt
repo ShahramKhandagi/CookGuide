@@ -4,12 +4,14 @@ import android.R.attr.bottom
 import android.R.attr.left
 import android.R.attr.right
 import android.R.attr.top
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.marginBottom
 import android.widget.LinearLayout.LayoutParams
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 
 import androidx.fragment.app.Fragment
@@ -39,7 +41,8 @@ class RecipeDetailFragment : Fragment() {
         val recipe = arguments?.getSerializable("recipe") as Recipe
         binding.recipeName.text = recipe.name
 
-        val imageResId = context?.resources?.getIdentifier(recipe.image, "drawable", context!!.packageName)
+        val imageResId =
+            context?.resources?.getIdentifier(recipe.image, "drawable", context!!.packageName)
 
         Glide.with(requireContext())
             .load(imageResId.takeIf { it != 0 } ?: R.drawable.logo)
@@ -54,7 +57,7 @@ class RecipeDetailFragment : Fragment() {
                 isClickable =
                     false // Chip ها انتخابی نیستند، می‌توانید این را تغییر دهید در صورت نیاز
                 isCheckable = false  // برای انتخابی شدن Chip‌ها
-                 setChipBackgroundColorResource(R.color.primary_color) // رنگ پس‌زمینه Chip
+                setChipBackgroundColorResource(R.color.primary_color) // رنگ پس‌زمینه Chip
                 // setTextColor(resources.getColorStateList(R.color.chip_text)) // رنگ متن Chip
                 // setCheckedIconResource(R.drawable.ic_check) // آیکون انتخابی
 //                 checkedIconVisible = true // نمایش آیکون در صورت انتخاب
@@ -69,6 +72,8 @@ class RecipeDetailFragment : Fragment() {
                 LayoutParams.WRAP_CONTENT
             )
             params.setMargins(4, 4, 0, 0)
+
+            chip.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
 
             chip.layoutParams = params
 

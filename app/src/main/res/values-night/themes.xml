@@ -4,4 +4,13 @@
         <!-- Customize your dark theme here. -->
         <item name="colorPrimary">@color/primary_color</item>
     </style>
+
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="action_bar">#1E1E1E</color>
+    <color name="background">#121212</color>
+    <color name="color_changes">#F5F5F5</color>
+
+    <color name="primary_color">#90A4BF</color>
+
 </resources>

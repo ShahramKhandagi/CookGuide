@@ -13,6 +13,7 @@ import ir.shahramkhandagi.cookguide.adapter.RecipeCategoryAdapter
 import ir.shahramkhandagi.cookguide.databinding.FragmentHomeBinding
 import ir.shahramkhandagi.cookguide.model.RecipeCategory
 import ir.shahramkhandagi.cookguide.ui.activity.MainActivity
+import ir.shahramkhandagi.cookguide.utils.PermissionUtils
 import ir.shahramkhandagi.cookguide.utils.Utils
 
 
@@ -31,13 +32,16 @@ class HomeFragment : Fragment(), Searchable {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+
         originalCategories = Utils.loadRecipeCategoriesFromJson(requireContext())
         displayedCategories = originalCategories.toMutableList()
+        PermissionUtils(requireActivity()).checkNotificationPermission()
 
         setupRecyclerView()
 
         return binding.root
     }
+
 
     private fun setupRecyclerView() {
         binding.categoryRecyclerView.apply {

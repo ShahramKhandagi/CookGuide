@@ -34,4 +34,9 @@
         android:textDirection="rtl"
         android:title="درباره ما" />
 
+    <item
+        android:id="@+id/nav_toggle_theme"
+        android:title="تغییر تم"
+        android:icon="@drawable/ic_dark_mode" />
+
 </menu>

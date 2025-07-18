@@ -49,7 +49,7 @@
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/vazir_bold"
                 android:text="ست"
-                android:textColor="@color/black"
+                android:textColor="@color/color_changes"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/scroll"
                 app:layout_constraintEnd_toStartOf="@+id/scroll"
@@ -75,7 +75,7 @@
                         android:layout_gravity="end"
                         android:fontFamily="@font/vazir_bold"
                         android:text="مواد لازم برای تهیه"
-                        android:textColor="@color/black"
+                        android:textColor="@color/color_changes"
                         android:textSize="20sp" />
 
                     <com.google.android.flexbox.FlexboxLayout
@@ -114,7 +114,7 @@
                         android:layout_gravity="end"
                         android:fontFamily="@font/vazir_bold"
                         android:text="مراحل پخت"
-                        android:textColor="@color/black"
+                        android:textColor="@color/color_changes"
                         android:textSize="20sp" />
 
 

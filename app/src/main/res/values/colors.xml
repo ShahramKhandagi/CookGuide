@@ -5,6 +5,11 @@
 
     <color name="action_bar">#FAFAFA</color>
     <color name="background">#F5F5F5</color>
+
+    <color name="color_changes">#FF000000</color>
+
+
     <color name="primary_color">#A8BBD3</color>
 <!--    <color name="primary_color">#9FBDE4</color>-->
+
 </resources>
