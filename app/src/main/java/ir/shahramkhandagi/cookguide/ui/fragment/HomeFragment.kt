@@ -44,20 +44,30 @@ class HomeFragment : Fragment(), Searchable {
 
 
     private fun setupRecyclerView() {
-        binding.categoryRecyclerView.apply {
-            layoutManager = GridLayoutManager(context, 2)
-            setHasFixedSize(true)
-            setItemViewCacheSize(20)
-            isNestedScrollingEnabled = false
-        }
-
         adapter = RecipeCategoryAdapter(displayedCategories) { category ->
             val action = HomeFragmentDirections.actionHomeFragmentToRecipeListFragment(category)
             findNavController().navigate(action)
         }
 
-        binding.categoryRecyclerView.adapter = adapter
+        val gridLayoutManager = GridLayoutManager(context, 2)
+        gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return when (adapter.getItemViewType(position)) {
+                    RecipeCategoryAdapter.VIEW_TYPE_AD -> 2 // تبلیغ کل عرض رو بگیره
+                    else -> 1 // آیتم عادی نصف عرض
+                }
+            }
+        }
+
+        binding.categoryRecyclerView.apply {
+            layoutManager = gridLayoutManager
+            setHasFixedSize(true)
+            setItemViewCacheSize(20)
+            isNestedScrollingEnabled = false
+            adapter = this@HomeFragment.adapter
+        }
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

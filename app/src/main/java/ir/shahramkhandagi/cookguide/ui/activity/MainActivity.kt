@@ -19,8 +19,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.adivery.sdk.Adivery
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.google.android.ads.mediationtestsuite.utils.AdManager
 import ir.shahramkhandagi.cookguide.R
 import ir.shahramkhandagi.cookguide.utils.ResourcesDialogFragment
 import ir.shahramkhandagi.cookguide.utils.Searchable
@@ -138,6 +140,7 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(R.id.homeFragment)
         )
+
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
